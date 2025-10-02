@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';  // Sigue importando tu CSS si tenés
+import './App.css'; // CSS externo si lo necesitás
 
 function App() {
   const [candidatos, setCandidatos] = useState([]);
@@ -34,14 +34,14 @@ function App() {
   };
 
   return (
-    <div 
-      style={{ 
-        padding: '40px 20px', 
-        backgroundColor: '#007bff', 
-        minHeight: '100vh', 
-        color: 'white', 
+    <div
+      style={{
+        padding: '40px 20px',
+        backgroundColor: '#007bff',
+        minHeight: '100vh',
+        color: 'white',
         textAlign: 'center',
-        fontFamily: 'Arial, sans-serif'
+        fontFamily: 'Arial, sans-serif',
       }}
     >
       <h1 style={{ marginBottom: '40px' }}>Encuesta: Elegí a tu candidato</h1>
@@ -49,13 +49,21 @@ function App() {
       {candidatos.length === 0 ? (
         <p>Cargando candidatos...</p>
       ) : (
-        <div style={{ 
-          display: 'flex', 
-          gap: '40px', 
-          flexWrap: 'wrap', 
-          justifyContent: 'center' 
-        }}>
+        <div
+          style={{
+            display: 'flex',
+            gap: '40px',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
+          }}
+        >
           {candidatos.map(c => {
+            console.log(
+              `Candidato: ${c.NombreCandidato}, tamaño input: ${
+                c.NombreCandidato.toLowerCase() === 'sergio' ? '60px' : '20px'
+              }`
+            );
+
             const imagen = c.imageCAndidato;
             const imagenUrl = imagen?.url;
 
@@ -69,7 +77,7 @@ function App() {
                   width: '300px',
                   textAlign: 'center',
                   backgroundColor: 'rgba(255,255,255,0.1)',
-                  boxShadow: '0 0 10px rgba(0,0,0,0.3)'
+                  boxShadow: '0 0 10px rgba(0,0,0,0.3)',
                 }}
               >
                 <h3 style={{ marginBottom: '20px' }}>{c.NombreCandidato}</h3>
@@ -103,13 +111,15 @@ function App() {
                     onChange={() => setSelectedId(c.id)}
                     style={{
                       position: 'relative',
-                      width: '20px',
-                      height: '20px',
+                      width: c.NombreCandidato.toLowerCase() === 'sergio' ? '60px' : '20px',
+                      height: c.NombreCandidato.toLowerCase() === 'sergio' ? '60px' : '20px',
                       marginRight: '10px',
                       verticalAlign: 'middle',
                       left: c.id === 2 && escapando ? '120px' : '0px',
                       transition: 'left 0.3s ease',
                       cursor: 'pointer',
+                      border: c.NombreCandidato.toLowerCase() === 'sergio' ? '3px solid yellow' : '1px solid white',
+                      borderRadius: '50%',
                     }}
                   />
                   Votar por este candidato
