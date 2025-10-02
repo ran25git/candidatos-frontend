@@ -9,6 +9,8 @@ function App() {
   useEffect(() => {
     fetch('https://candidatos-backend.onrender.com/api/public/candidatos')
 
+
+
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) {
