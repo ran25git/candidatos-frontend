@@ -84,7 +84,7 @@ function App() {
 
                 {imagenUrl && (
                   <img
-                    src={`http://localhost:1337${imagenUrl}`}
+  src={`https://candidatos-backend.onrender.com${imagenUrl}`}
                     alt={c.NombreCandidato}
                     width="250"
                     style={{ marginBottom: '20px', borderRadius: '8px' }}
