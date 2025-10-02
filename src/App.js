@@ -7,7 +7,8 @@ function App() {
   const [escapando, setEscapando] = useState(false);
 
   useEffect(() => {
-    fetch('http://localhost:1337/api/public/candidatos')
+    fetch('https://candidatos-backend.onrender.com/api/public/candidatos')
+
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) {
